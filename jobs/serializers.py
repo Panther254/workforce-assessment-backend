@@ -1,3 +1,4 @@
+from .models import Job
 from rest_framework import serializers
 from .models import Job, JobApplication, TechStack, Position
 
@@ -28,3 +29,9 @@ class TechStackSerializer(serializers.ModelSerializer):
     class Meta:
         model = TechStack
         fields = '__all__'
+
+
+class RetrieveJobSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        fields = ['job_title','company_title','sector']

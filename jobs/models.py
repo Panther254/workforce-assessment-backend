@@ -44,6 +44,8 @@ class JobApplication(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='applications')
     date_applied = models.DateField(auto_now_add=True)
     name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=15)
     email = models.EmailField()
     resume = models.FileField(upload_to='resumes')
     cover_letter = models.TextField()
