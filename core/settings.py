@@ -130,14 +130,6 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/workforce_assessment_backend/media/'
-
 CORS_ALLOW_ALL_ORIGINS = True
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'XXXXXXXX',
-    'API_KEY': 'XXXXXXXXXXXXXXX',
-    'API_SECRET': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-}
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

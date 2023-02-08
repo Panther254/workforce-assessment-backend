@@ -2,9 +2,7 @@ asgiref==3.6.0
 autopep8==2.0.1
 certifi==2022.12.7
 charset-normalizer==3.0.1
-cloudinary==1.31.0
 Django==4.1.6
-django-cloudinary-storage==0.3.0
 django-cors-headers==3.13.0
 djangorestframework==3.14.0
 idna==3.4
