@@ -24,7 +24,7 @@ class JobListCreateView(generics.ListCreateAPIView):
         tech_stack_objects = []
         positions_objects = []
         job_id = serializer.data['id']
-        print(tech_stacks)
+        print(tech_stackss)
 
         for tech_stacks in tech_stackss:
             for tech_stack in tech_stacks.split(","):

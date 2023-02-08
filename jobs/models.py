@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
 class Job(models.Model):
@@ -10,7 +11,7 @@ class Job(models.Model):
         (ONSITE, 'Onsite'),
     ]
 
-    company_logo = models.ImageField(upload_to='company_logos')
+    company_logo = models.ImageField(upload_to='company_logos', default='logo.png')
     company_title = models.CharField(max_length=100)
     job_title = models.CharField(max_length=100)
     salary_range = models.CharField(max_length=100)
@@ -47,7 +48,8 @@ class JobApplication(models.Model):
     position = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
     email = models.EmailField()
-    resume = models.FileField(upload_to='resumes')
+    resume = models.FileField(
+        upload_to='resumes', storage=RawMediaCloudinaryStorage())
     cover_letter = models.TextField()
 
     def __str__(self):
