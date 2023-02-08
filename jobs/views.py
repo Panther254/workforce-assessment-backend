@@ -17,7 +17,7 @@ class JobListCreateView(generics.ListCreateAPIView):
         positionss = self.request.data.pop('positions')
         serializer = self.get_serializer(data=self.request.data)
         if not serializer.is_valid():
-            context = {'message': 'Error adding the positions',
+            context = {'message': 'Error adding the Job instance',
                        'error': serializer.errors}
             return Response(context)
         serializer.save()
