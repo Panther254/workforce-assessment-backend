@@ -1,5 +1,8 @@
 from django.db import models
 
+
+default_logo = "https://res.cloudinary.com/dvzbsqkfs/image/upload/v1675945846/workforce_assessment/media/company_logos/logo_speksk.png"
+
 class Job(models.Model):
     REMOTE = 'REMOTE'
     ONSITE = 'ONSITE'
@@ -9,7 +12,7 @@ class Job(models.Model):
         (ONSITE, 'Onsite'),
     ]
 
-    company_logo_url = models.URLField(max_length=300,default="logo.png")
+    company_logo_url = models.URLField(max_length=300,default=default_logo)
     company_title = models.CharField(max_length=100)
     job_title = models.CharField(max_length=100)
     salary_range = models.CharField(max_length=100)
@@ -46,7 +49,7 @@ class JobApplication(models.Model):
     position = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
     email = models.EmailField()
-    resume_link = models.URLField(max_length=200, default="logo.png")
+    resume_link = models.URLField(max_length=200, default="")
     cover_letter = models.TextField()
 
     def __str__(self):

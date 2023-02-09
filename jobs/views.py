@@ -24,7 +24,6 @@ class JobListCreateView(generics.ListCreateAPIView):
         tech_stack_objects = []
         positions_objects = []
         job_id = serializer.data['id']
-        print(tech_stackss)
 
         for tech_stacks in tech_stackss:
             for tech_stack in tech_stacks.split(","):
@@ -50,14 +49,23 @@ class JobListCreateView(generics.ListCreateAPIView):
             context = {'message': 'Error adding the positions. The field is empty', 'error': positions_serializer.errors}
             return Response(context)
             
-        saved_job = Job.objects.get(id=job_id)
-        serialized_job = JobSerializer(data=saved_job)
-        if serialized_job.is_valid():
-            return Response(serialized_job.data,status.HTTP_202_ACCEPTED)
-        else:
-            context = {'message': 'Job has been saved. But there is an error fetching the saved model',
-                       'error': serialized_job.errors}
-            return Response(context)
+        context = {
+            "id": serializer.data['id'],
+            "job_title": serializer.data['job_title'],
+            "company_title": serializer.data['company_title'],
+            "company_logo_url": serializer.data['company_logo_url'],
+            "techstacks": tech_stack_serializer.data,
+            "positions": positions_serializer.data,
+            "number_of_employees": serializer.data['number_of_employees'],
+            "country": serializer.data['country'],
+            "salary_range": serializer.data['salary_range'],
+            "job_type": serializer.data['job_type'],
+            "sector": serializer.data['sector'],
+            "applications": [],
+            "date_posted": serializer.data['date_posted'],
+        }
+        
+        return Response(context,status=status.HTTP_201_CREATED)
 
 class JobApplicationListCreateView(generics.ListCreateAPIView):
     queryset = JobApplication.objects.all()
